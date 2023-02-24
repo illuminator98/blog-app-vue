@@ -32,5 +32,8 @@ export async function apiFetch(url, options = {}) {
 	if (response.status === 401) {
 		router.push({ name: "login" });
 	}
+	if (response.status === 404) {
+		router.push({name: 'NotFound'})
+	}
 	return response;
 }

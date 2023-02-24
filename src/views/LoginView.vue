@@ -3,14 +3,15 @@
     <b-card
       title="Login"
       style="max-width: 20rem"
-      class="mb-2 mx-auto"
+      class="mb-2 mx-auto card-color"
     >
       <b-card-text>
-        <b-form-input class="mt-2" v-model="username" placeholder="Username"></b-form-input>
-        <b-form-input class="mt-2" v-model="password" type="password" placeholder="Password"></b-form-input>
+        <b-form-input class="mt-2 form-color" v-model="username" placeholder="Username"></b-form-input>
+        <b-form-input class="mt-2 form-color" v-model="password" type="password" placeholder="Password"></b-form-input>
       </b-card-text>
 
-      <b-button @click="login" variant="primary">Login</b-button>
+     <b-button  @click="login" class="bg-dark post-btn">Login</b-button>
+      <p class="mt-2  ">Dont have an account ? <router-link  to="/Signup">Signup</router-link></p>
     </b-card>
   </div>
 </template>
@@ -40,8 +41,24 @@ export default {
         })
          const responseData = await response.json()
 			localStorage.setItem('token', responseData.token)
-			this.$router.push({name: 'Home'})
+			this.$router.push({name: 'home'})
     }
+  },
+  created() {
+     if (localStorage.getItem('token')){
+      this.$router.push({name: 'home'})
+
+     }
   }
 };
 </script>
+
+<style>
+.card-color{
+   background-color: #303338 !important;
+}
+.form-color {
+ color: white !important;
+ background-color:#222427 !important;
+}
+</style>
