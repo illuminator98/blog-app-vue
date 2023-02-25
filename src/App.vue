@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     logout() {
-      apiFetch("http://localhost:8000/users/logout", {
+      apiFetch("https://dimitarvuik.pythonanywhere.com/users/logout", {
         method: "GET",
       });
 

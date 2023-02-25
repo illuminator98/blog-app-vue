@@ -156,7 +156,7 @@ export default {
   methods: {
     async getPosts() {
       let response = await apiFetch(
-        "http://localhost:8000/blogs/posts/" + this.$route.params.username
+        "https://dimitarvuik.pythonanywhere.com/blogs/posts/" + this.$route.params.username
       );
       let responseData = await response.json();
       this.posts = responseData.posts;
@@ -180,7 +180,7 @@ export default {
         text: this.comment,
       };
       await apiFetch(
-        "http://localhost:8000/blogs/posts/" +
+        "https://dimitarvuik.pythonanywhere.com/blogs/posts/" +
           this.selectedPost.id +
           "/comment",
         {
@@ -194,7 +194,7 @@ export default {
     async editComment() {
       let requestData = { text: this.selectedComment.text };
       let response = await apiFetch(
-        "http://localhost:8000/blogs/posts/" +
+        "https://dimitarvuik.pythonanywhere.com/blogs/posts/" +
           this.selectedPost.id +
           "/comment/" +
           this.selectedComment.id,
@@ -211,7 +211,7 @@ export default {
     },
     deleteComment() {
       apiFetch(
-        "http://localhost:8000/blogs/posts/" +
+        "https://dimitarvuik.pythonanywhere.com/blogs/posts/" +
           this.selectedPost.id +
           "/comment/" +
           this.selectedComment.id,
@@ -237,13 +237,13 @@ export default {
   async created() {
     console.log("wjatever");
     let response = await apiFetch(
-      `http://localhost:8000/blogs/posts/${this.$route.params.username}`
+      `https://dimitarvuik.pythonanywhere.com/blogs/posts/${this.$route.params.username}`
     );
     let responseData = await response.json();
 
     this.posts = responseData.posts;
     this.user = responseData.user;
-    const currentUserResponse = await apiFetch("http://localhost:8000/blogs/username");
+    const currentUserResponse = await apiFetch("https://dimitarvuik.pythonanywhere.com/blogs/username");
      this.currentUser = await currentUserResponse.json();
   },
 };

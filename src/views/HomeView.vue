@@ -308,7 +308,7 @@ export default {
         title: this.title,
         text: this.text,
       };
-      let response = await apiFetch("http://localhost:8000/blogs/create/post", {
+      let response = await apiFetch("https://dimitarvuik.pythonanywhere.com/blogs/create/post", {
         method: "POST",
         body: JSON.stringify(requestData),
       });
@@ -322,7 +322,7 @@ export default {
         text: this.selectedPost.text,
       };
       let response = await apiFetch(
-        "http://localhost:8000/blogs/posts/" + this.selectedPost.id,
+        "https://dimitarvuik.pythonanywhere.com/blogs/posts/" + this.selectedPost.id,
         {
           method: "PATCH",
           body: JSON.stringify(requestData),
@@ -337,7 +337,7 @@ export default {
     async DeletePost() {
       try {
         await apiFetch(
-          "http://localhost:8000/blogs/posts/" + this.selectedPost.id,
+          "https://dimitarvuik.pythonanywhere.com/blogs/posts/" + this.selectedPost.id,
           {
             method: "DELETE",
           }
@@ -353,7 +353,7 @@ export default {
         text: this.comment,
       };
       await apiFetch(
-        "http://localhost:8000/blogs/posts/" +
+        "https://dimitarvuik.pythonanywhere.com/blogs/posts/" +
           this.selectedPost.id +
           "/comment",
         {
@@ -367,7 +367,7 @@ export default {
     async editComment() {
       let requestData = { text: this.selectedComment.text };
       let response = await apiFetch(
-        "http://localhost:8000/blogs/posts/" +
+        "https://dimitarvuik.pythonanywhere.com/blogs/posts/" +
           this.selectedPost.id +
           "/comment/" +
           this.selectedComment.id,
@@ -384,7 +384,7 @@ export default {
     },
     deleteComment() {
       apiFetch(
-        "http://localhost:8000/blogs/posts/" +
+        "https://dimitarvuik.pythonanywhere.com/blogs/posts/" +
           this.selectedPost.id +
           "/comment/" +
           this.selectedComment.id,
@@ -405,14 +405,14 @@ export default {
         });
     },
     async getPosts() {
-      let response = await apiFetch("http://localhost:8000/blogs/posts/all");
+      let response = await apiFetch("https://dimitarvuik.pythonanywhere.com/blogs/posts/all");
       let responseData = await response.json();
       this.posts = responseData;
     },
   },
   async created() {
     await this.getPosts();
-    let user = await apiFetch("http://localhost:8000/blogs/username");
+    let user = await apiFetch("https://dimitarvuik.pythonanywhere.com/blogs/username");
     let responseUser = await user.json();
 
     console.log(user);

@@ -46,7 +46,7 @@ export default {
             username:this.username,
             password:this.password,
         }
-        const response = await fetch('http://localhost:8000/users/signup', {
+        const response = await fetch('https://dimitarvuik.pythonanywhere.com/users/signup', {
             method:'POST',
             headers: {
                 'content-type': 'application/json',
