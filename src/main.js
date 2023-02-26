@@ -30,6 +30,7 @@ export async function apiFetch(url, options = {}) {
 	};
 	const response = await fetch(url, options);
 	if (response.status === 401) {
+		localStorage.removeItem('token')
 		router.push({ name: "login" });
 	}
 	if (response.status === 404) {

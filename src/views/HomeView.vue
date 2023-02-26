@@ -6,7 +6,7 @@
           <div class="row d-flex justify-content-center">
             <div class="col-md-6">
               <h1 class="text-white">Welcome <br /></h1>
-              <b-button class="bg-dark mb-3 post" v-b-modal.modal-center
+              <b-button class="bg-dark mb-3" v-b-modal.modal-center
                 >Create New Post</b-button
               >
               <div class="d-flex">

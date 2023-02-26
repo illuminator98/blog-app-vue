@@ -39,6 +39,10 @@ export default {
             },
             body: JSON.stringify(requestData)
         })
+        if (!response.ok){
+          alert('invalid credentials')
+          return;
+        }
          const responseData = await response.json()
 			localStorage.setItem('token', responseData.token)
 			this.$router.push({name: 'home'})
