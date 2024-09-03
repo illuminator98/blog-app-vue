@@ -235,7 +235,6 @@ export default {
     },
   },
   async created() {
-    console.log("wjatever");
     let response = await apiFetch(
       `https://dimitarvuik.pythonanywhere.com/blogs/posts/${this.$route.params.username}`
     );

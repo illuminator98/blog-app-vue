@@ -6,7 +6,7 @@
       class="mb-2 mx-auto card-color"
     >
       <b-card-text>
-        <b-form-input class="mt-2 form-color" v-model="username" placeholder="Username"></b-form-input>
+        <b-form-input  class="mt-2 form-color" v-model="username" placeholder="Username" ></b-form-input>
         <b-form-input class="mt-2 form-color" v-model="email" type="email" placeholder="Email"></b-form-input>
         <b-form-input class="mt-2 form-color" v-model="password" type="password" placeholder="Password"></b-form-input>
         <b-form-input class="mt-2 form-color" v-model="confirmPassword" type="password" placeholder="Confirm Password"></b-form-input>
@@ -14,7 +14,7 @@
       <b-button  @click="signup" class="bg-dark post-btn">Signup</b-button>
             
               
-      <p class="mt-2 mb-0" >Already have an account ?<router-link  to="/login">Log in</router-link></p>
+      <p class="mt-2 mb-0" >Already have an account ? <router-link  to="/login">Log in</router-link></p>
     </b-card>
   </div>
 </template>
@@ -53,14 +53,28 @@ export default {
             },
             body: JSON.stringify(requestData)
         })
+        if(response.status == 201 ||response.status == 200) {
+          alert('User created sucessfully')
+          this.$router.push({name: 'login'})
+          
+        }
+        else if (response.status==400) {
+          alert('User already exists')
+        }
         console.log(response)
-        this.$router.push({name: 'login'})
     }
   }
 };
 </script>
 
 <style>
+.required {
+  color: red;
+  font-size: 10px;
+  display: flex;
+  margin-top: 5px;
+
+}
 .card-color{
    background-color: #303338 !important;
 }
